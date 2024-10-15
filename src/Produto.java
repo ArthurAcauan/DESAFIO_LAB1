@@ -53,7 +53,7 @@ public class Produto {
     //Método toString;
     @Override
     public String toString() {
-        return "Nome: " + nome + ", Preço: " + preco;
+        return "Nome: " + nome + ", Preço: " + preco + ", Data de Validade- " + dataDeValidade;
     }
 
 

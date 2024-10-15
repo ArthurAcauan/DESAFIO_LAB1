@@ -93,24 +93,20 @@ public class Principal {
         int ano = Integer.parseInt(scanner.nextLine());
 
         Data dataValidade = new Data(dia, mes, ano);
+        Data dataAtual = new Data(5, 10, 2024);
 
         Produto produto = new Produto(nome, preco, dataValidade);
 
-        System.out.println("Você criou o seguinte produto:\n" + produto.toString() + "\n");
-
-        verificarProdutos();
-
-        chamarMenu();
-    }
-
-    public static void verificarProdutos() {
-        Data dataAtual = new Data(5, 10, 2024);
         if (produto.estaVencido(dataAtual)) {
             System.out.println(produto + " VENCIDO");
         } else {
             System.out.println(produto + " NÃO VENCIDO");
         }
-        System.out.println("=====");
+        System.out.println("Verificação concluída!");
+
+        System.out.println("Você criou o seguinte produto:\n" + produto.toString() + "\n");
+
+        chamarMenu();
     }
 
     private static void sair() {

@@ -67,7 +67,7 @@ public class Loja {
     //Método toString, retornando todos atributos da Clase Loja;
     @Override
     public String toString() {
-        return "Nome: " + nome + ", Quantidade de Funcionarios: " + quantidadeFuncionarios + "Salario Base Funcionario: " + salarioBaseFuncionario;
+        return "Nome: " + nome + ", Quantidade de Funcionarios: " + quantidadeFuncionarios + ", Salario Base Funcionario: " + salarioBaseFuncionario + ", Endereço- " + endereco + ", Data de fundação- " + dataDeFundacao;
     }
 
     //Método gastosComSalario;
