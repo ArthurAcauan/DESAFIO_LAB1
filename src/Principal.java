@@ -1,122 +1,124 @@
 import java.util.Scanner;
+import static java.lang.System.exit;
 
 public class Principal {
-    
-    //Método Main
+
+    static Scanner scanner = new Scanner(System.in);
+    static Produto produto;
+
     public static void main(String[] args) {
-
-        //Atributos
-        int menu = 0;
-        Loja loja = null;
-        Produto produto = null;
-
-        try (Scanner scannerMenu = new Scanner(System.in)) {
-            while (menu != 3) {
-                System.out.println("Menu: ");
-                System.out.println("(1) Criar uma loja: ");
-                System.out.println("(2) Criar um produto: ");
-                System.out.println("(3) Sair: ");
-
-                System.out.print("Digite a opção desejada");
-                int Menu = scannerMenu.nextInt();
-                
-            switch (Menu) {
-                case 1:
-                    loja = novaLoja();
-                    System.out.println("Loja criada com sucesso: " + loja);
-                    System.out.println(loja.toString());
-                    break;
-                case 2:
-                    produto = novoProduto();
-                    System.out.println("Produto criado com sucesso: " + produto);
-                    System.out.println(produto.toString());
-
-                    Data dataValidade = new Data(20, 10, 2023);
-                    if (produto.estaVencido(dataValidade)) {
-                        System.out.println("Produto Vencido");
-                    } else {
-                        System.out.println("Produto não esta vencido");
-                    } 
-                    break;
-                case 3:
-                    System.out.println("Encerrando o programa...");
-                    break;
-                default:
-                    break;
-            }
-                
-     }
-        }
-    
+        chamarMenu();
     }
 
-        public static Loja novaLoja() {
-            Scanner scannerLoja = new Scanner(System.in);
-            System.out.println("Digite o nome da loja: ");
-            String nome = scannerLoja.nextLine();
-            System.out.println("Digite a quantidade de funcionarios: ");
-            int quantidadeFuncionarios = scannerLoja.nextInt();
-            System.out.println("Digite o salario base: ");
-            double salarioBaseFuncionario = scannerLoja.nextDouble();
-            scannerLoja.close();
-            Endereco endereco = novoEndereco();
-            Data dataDeFundacao = novaData();
+    private static void chamarMenu() {
+        System.out.println("\nSegue o menu de comandos: ");
 
-            return new Loja(nome, quantidadeFuncionarios, salarioBaseFuncionario, endereco, dataDeFundacao);
+        System.out.println("(1) criar uma loja");
+        System.out.println("(2) criar um produto");
+        System.out.println("(3) sair");
 
+        String resposta = scanner.nextLine();
+
+        switch (resposta) {
+            case "1":
+                criarloja();
+                break;
+            case "2":
+                criarProduto();
+                break;
+            case "3":
+                sair();
+                break;
+            default:
+                System.out.println("Opção inválida. Escolha uma opção: ");
+                chamarMenu();
         }
+    }
 
-        public static Produto novoProduto() {
-            Scanner scanner = new Scanner(System.in);
-            System.out.println("Digite o nome do produto: ");
-            String nome = scanner.nextLine();
-            System.out.println("Digite o preço do produto: ");
-            double preco = scanner.nextDouble();
-            scanner.close();
+    private static void criarloja() {
+        System.out.println("Digite o nome da loja: \n");
+        String nome = scanner.nextLine();
 
-            return new Produto(nome, preco, novaData());
+        System.out.println("Digite a quantidade de funcionários: \n");
+        int quantidadeFuncionarios = Integer.parseInt(scanner.nextLine());
+
+        System.out.println("Digite o salário base para os funcionários: \n");
+        double salarioBaseFuncionario = Double.parseDouble(scanner.nextLine());
+
+        System.out.println("Para o endereço da loja, digite o nome da rua: \n");
+        String nomeDaRua = scanner.nextLine();
+        System.out.println("Para o endereço da loja, digite a cidade: \n");
+        String cidade = scanner.nextLine();
+        System.out.println("Para o endereço da loja, digite o estado: \n");
+        String estado = scanner.nextLine();
+        System.out.println("Para o endereço da loja, digite o país: \n");
+        String pais = scanner.nextLine();
+        System.out.println("Para o endereço da loja, digite o cep: \n");
+        String cep = scanner.nextLine();
+        System.out.println("Para o endereço da loja, digite o número: \n");
+        String numero = scanner.nextLine();
+        System.out.println("Para o endereço da loja, digite o complemento: \n");
+        String complemento = scanner.nextLine();
+
+        Endereco endereco = new Endereco(nomeDaRua, cidade, estado, pais, cep, numero, complemento);
+
+        System.out.println("Para a data de fundação, digite o dia: \n");
+        int dia = Integer.parseInt(scanner.nextLine());
+        System.out.println("Para a data de fundação, digite o mês: \n");
+        int mes = Integer.parseInt(scanner.nextLine());
+        System.out.println("Para a data de fundação, digite o ano: \n");
+        int ano = Integer.parseInt(scanner.nextLine());
+
+        Data dataFundacao = new Data(dia, mes, ano);
+
+        Loja loja = new Loja(nome, quantidadeFuncionarios, salarioBaseFuncionario, endereco, dataFundacao);
+
+        System.out.println("Você criou a seguinte loja:\n" + loja.toString());
+
+        chamarMenu();
+    }
+
+    private static void criarProduto() {
+        System.out.println("Digite o nome do produto: \n");
+        String nome = scanner.nextLine();
+
+        System.out.println("Digite o preço do produto: \n");
+        double preco = Double.parseDouble(scanner.nextLine());
+
+        System.out.println("Para a data de validade do produto, digite primeiro o dia: \n");
+        int dia = Integer.parseInt(scanner.nextLine());
+        System.out.println("Para a data de validade do produto, digite agora o mês: \n");
+        int mes = Integer.parseInt(scanner.nextLine());
+        System.out.println("Para a data de validade do produto, digite agora o ano: \n");
+        int ano = Integer.parseInt(scanner.nextLine());
+
+        Data dataValidade = new Data(dia, mes, ano);
+
+        Produto produto = new Produto(nome, preco, dataValidade);
+
+        System.out.println("Você criou o seguinte produto:\n" + produto.toString() + "\n");
+
+        verificarProdutos();
+
+        chamarMenu();
+    }
+
+    public static void verificarProdutos() {
+        Data dataAtual = new Data(5, 10, 2024);
+        if (produto.estaVencido(dataAtual)) {
+            System.out.println(produto + " VENCIDO");
+        } else {
+            System.out.println(produto + " NÃO VENCIDO");
         }
+        System.out.println("=====");
+    }
 
-        public static Endereco novoEndereco() {
-            Scanner scannerEndereco = new Scanner(System.in);
+    private static void sair() {
+        System.out.println("Saindo... ");
+        exit(0);
+    }
 
-            System.out.println("Dados endereço, rua: ");
-                String nomeDaRua = scannerEndereco.nextLine();
-        
-                System.out.println("Número:");
-                String numero = scannerEndereco.nextLine();
-        
-                System.out.println("Cidade:");
-                String nomeDaCidade = scannerEndereco.nextLine();
-        
-                System.out.println("País:");
-                String pais = scannerEndereco.nextLine();
-        
-                System.out.println("Estado:");
-                String estado = scannerEndereco.nextLine();
-        
-                System.out.println("CEP:");
-                String cep = scannerEndereco.nextLine();
-        
-                System.out.println("Complemento:");
-                String complemento = scannerEndereco.nextLine();
-                scannerEndereco.close();
-
-                return new Endereco(nomeDaRua, nomeDaCidade, estado, pais, cep, numero, complemento);
-        }
-
-        private static Data novaData() {
-            Scanner scannerData = new Scanner(System.in);
-            System.out.println("Digite o dia:");
-            int dia = scannerData.nextInt();
-            System.out.println("Digite o mes:");
-            int mes = scannerData.nextInt();
-            System.out.println("Digite o ano:");
-            int ano = scannerData.nextInt();
-            scannerData.close();
-
-            return new Data(dia, mes, ano);
-        }
 }
+    
 
-
+    
