@@ -2,14 +2,14 @@ import java.util.Scanner;
 import static java.lang.System.exit;
 
 public class Principal {
-
+    //Atributos
     static Scanner scanner = new Scanner(System.in);
     static Produto produto;
 
     public static void main(String[] args) {
         chamarMenu();
     }
-
+    //Método chamarMenu
     private static void chamarMenu() {
         System.out.println("\nSegue o menu de comandos: ");
 
@@ -35,6 +35,7 @@ public class Principal {
         }
     }
 
+    //Criar loja:
     private static void criarloja() {
         System.out.println("Digite o nome da loja: \n");
         String nome = scanner.nextLine();
@@ -78,6 +79,7 @@ public class Principal {
         chamarMenu();
     }
 
+    //Criar Produto:
     private static void criarProduto() {
         System.out.println("Digite o nome do produto: \n");
         String nome = scanner.nextLine();
@@ -109,6 +111,7 @@ public class Principal {
         chamarMenu();
     }
 
+    //Sair:
     private static void sair() {
         System.out.println("Saindo... ");
         exit(0);
