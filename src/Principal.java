@@ -5,6 +5,7 @@ public class Principal {
     //Atributos
     static Scanner scanner = new Scanner(System.in);
     static Produto produto;
+    static Produto[] produtos = new Produto[2];
 
     public static void main(String[] args) {
         chamarMenu();
@@ -72,7 +73,7 @@ public class Principal {
 
         Data dataFundacao = new Data(dia, mes, ano);
 
-        Loja loja = new Loja(nome, quantidadeFuncionarios, salarioBaseFuncionario, endereco, dataFundacao);
+        Loja loja = new Loja(nome, quantidadeFuncionarios, salarioBaseFuncionario, endereco, dataFundacao, ano);
 
         System.out.println("Você criou a seguinte loja:\n" + loja.toString());
 

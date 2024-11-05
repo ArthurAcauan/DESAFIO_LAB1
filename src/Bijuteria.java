@@ -3,8 +3,8 @@ public class Bijuteria extends Loja{
     private double metaVendas;
 
     //Construtor
-    public Bijuteria (String nome, int quantidadeFuncionarios, double salarioBaseFuncionario, Endereco endereco, Data dataFundacao, double metaVendas) {
-        super(nome, quantidadeFuncionarios, salarioBaseFuncionario, endereco, dataFundacao);
+    public Bijuteria (String nome, int quantidadeFuncionarios, double salarioBaseFuncionario, Endereco endereco, Data dataFundacao, double metaVendas, int estoqueProdutos) {
+        super(nome, quantidadeFuncionarios, salarioBaseFuncionario, endereco, dataFundacao, estoqueProdutos);
         this.metaVendas = metaVendas;
     }
 
