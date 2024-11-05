@@ -46,7 +46,6 @@ public class Principal {
 
         System.out.println("Digite o salário base para os funcionários: \n");
         double salarioBaseFuncionario = Double.parseDouble(scanner.nextLine());
-
         System.out.println("Para o endereço da loja, digite o nome da rua: \n");
         String nomeDaRua = scanner.nextLine();
         System.out.println("Para o endereço da loja, digite a cidade: \n");
