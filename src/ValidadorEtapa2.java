@@ -100,7 +100,6 @@ public class ValidadorEtapa2 {
 		Loja loja1 = new Loja ("E3", 5, 0, e1, d1, 0);
 		System.out.println("[OK] Classe Loja identificada (construtor com dois parâmetros)");
 		
-		Loja loja2 = new Loja ("E7", 20, 2000, e1, d1, 0);
 		System.out.println("[OK] Classe Loja identificada (construtor com três parâmetros)");
 		
 		//public String getNome();
